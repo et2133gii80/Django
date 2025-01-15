@@ -1,0 +1,32 @@
+[
+{
+    "model": "catalog.category",
+    "pk": 6,
+    "fields": {
+        "category_name": "Apple",
+        "description": "Товарыи продукты от копмании Apple"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 7,
+    "fields": {
+        "category_name": "Samsung",
+        "description": "Товарыи продукты от копмании Samsung"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+        "product_name": "Samsung Galaxy A10",
+        "description": "Белый цвет, 256гб",
+        "img": "",
+        "category": "Samsung",
+        "price": 14000,
+        "created_at": "2025-01-15T10:32:37.364Z",
+        "updated_at": "2025-01-15T10:32:37.364Z",
+        "group": 7
+    }
+}
+]
