@@ -10,7 +10,7 @@
 {% include 'catalog/header.html' %}
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">{{product.product_name}}</h1>
+    <h1 class="display-4">{{object.product_name}}</h1>
 </div>
 
 <div class="container">
@@ -21,27 +21,31 @@
                     <table class="table table-striped">
                         <tr>
                             <td class="w-25">Название</td>
-                            <td>{{product.product_name}}</td>
+                            <td>{{object.product_name}}</td>
                         </tr>
                         <tr>
                             <td class="w-25">Описание</td>
-                            <td>{{product.description}}</td>
+                            <td>{{object.description}}</td>
                         </tr>
                         <tr>
                             <td class="w-25">Категория</td>
-                            <td>{{product.category}}</td>
+                            <td>{{object.category}}</td>
                         </tr>
                         <tr>
                             <td class="w-25">Цена</td>
-                            <td>{{product.price}}</td>
+                            <td>{{object.price}}</td>
                         </tr>
                         <tr>
                             <td class="w-25">Дата создания</td>
-                            <td>{{product.created_at}}</td>
+                            <td>{{object.created_at}}</td>
                         </tr>
                         <tr>
                             <td class="w-25">Дата последнего изменения</td>
-                            <td>{{product.updated_at}}</td>
+                            <td>{{object.updated_at}}</td>
+                        </tr>
+                        <tr>
+                            <td class="w-25">Дата последнего изменения</td>
+                            <td>{{object.updated_at}}</td>
                         </tr>
                     </table>
                 </div>

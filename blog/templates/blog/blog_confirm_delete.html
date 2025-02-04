@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Skystore</title>
+
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+</head>
+
+<body>
+{% include 'blog/header.html' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form class="row" method="post" enctype="multipart/form-data">
+                <div class="card">
+                    <p class="card-text text-center">Вы уверенны?</p>
+                    <div class="card-body">
+                        {% csrf_token %}
+                    </div>
+                    <div class="d-grid gap-2 col-4 mx-auto">
+                        <button type="submit" class="btn btn-danger ">Удалить</button>
+                        <a class="btn btn-primary" href="{% url 'blog:blog_list' %}" role="button">Отмена</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% include 'blog/footer.html' %}
+</div>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
