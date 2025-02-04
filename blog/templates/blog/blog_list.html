@@ -29,9 +29,9 @@
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
                         <li>- {{blog.content |truncatechars:150}}</li>
                     </ul>
-                    <a class="p-2 btn btn-outline-primary" >Редактировать</a>
-                    <a class="p-2 btn btn-outline-primary">Удалить</a>
+                    <a class="p-2 btn btn-outline-primary" href="{% url 'blog:blog_delete' blog.pk %}">Удалить</a>
                     <a class="p-2 btn btn-outline-primary" href="{% url 'blog:blog_detail' blog.pk %}">Подробнее</a>
+                    <a class="p-2 btn btn-outline-primary" href="{% url 'blog:blog_update' blog.pk %}">Редактировать</a>
                 </div>
             </div>
         </div>

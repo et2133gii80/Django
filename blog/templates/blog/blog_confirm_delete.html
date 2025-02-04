@@ -12,21 +12,18 @@
 {% include 'blog/header.html' %}
 
 <div class="container">
-    <div class="row ">
-        <div class="col-6">
+    <div class="row">
+        <div class="col">
             <form class="row" method="post" enctype="multipart/form-data">
                 <div class="card">
+                    <p class="card-text text-center">Вы уверенны?</p>
                     <div class="card-body">
                         {% csrf_token %}
-                        {{ form.as_p }}
                     </div>
-                    <button type="submit" class="btn btn-primary">
-                        {% if object %}
-                        Сохранить
-                        {% else %}
-                        Создать
-                        {%  endif %}
-                    </button>
+                    <div class="d-grid gap-2 col-4 mx-auto">
+                        <button type="submit" class="btn btn-danger ">Удалить</button>
+                        <a class="btn btn-primary" href="{% url 'blog:blog_list' %}" role="button">Отмена</a>
+                    </div>
                 </div>
             </form>
         </div>
