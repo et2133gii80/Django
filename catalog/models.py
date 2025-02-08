@@ -15,13 +15,13 @@ class Category(models.Model):
         ordering = ['category_name']
 
 class Product(models.Model):
-    product_name = models.CharField(max_length= 150, verbose_name='наименование')
-    description = models.TextField(verbose_name= 'описание', null= True)
-    img = models.ImageField(verbose_name= 'изображение', upload_to='images/', blank=True, null=True)
-    category = models.CharField(verbose_name= 'категория')
-    price = models.IntegerField(verbose_name='цена за покупку')
-    created_at = models.DateTimeField(verbose_name= 'дата создания', auto_now_add=True)
-    updated_at = models.DateTimeField(verbose_name= 'дата последнего изменения', auto_now_add=True)
+    product_name = models.CharField(max_length=150, verbose_name='наименование', blank=True)
+    description = models.TextField(verbose_name='описание', null=True, blank=True)
+    img = models.ImageField(verbose_name='изображение', upload_to='images/', blank=True, null=True)
+    category = models.CharField(verbose_name='категория')
+    price = models.IntegerField(verbose_name='цена за покупку', blank=True)
+    created_at = models.DateTimeField(verbose_name='дата создания', auto_now_add=True)
+    updated_at = models.DateTimeField(verbose_name='дата последнего изменения', auto_now_add=True)
     group = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def __str__(self):
