@@ -14,6 +14,7 @@
     <h1 class="display-4">Skystore</h1>
     <p class="lead">Skystore - это отличный вариант хранения ваших плагинов и примеров кода, который вы бы хотели
         продать</p>
+    <a  class="p-2 btn btn-outline-primary" href="{% url 'catalog:product_create' %}">Создать товар</a>
 </div>
 
 <div class="container">
@@ -25,11 +26,13 @@
                     <h4 class="my-0 font-weight-normal">{{product.product_name}}</h4>
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$ 140</h1>
+                    <h1 class="card-title pricing-card-title">{{product.price}}</h1>
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
                         <li>- {{product.description |truncatechars:100}}</li>
                     </ul>
-                    <a  class="btn btn-primary" href="{% url 'catalog:products_detail' product.pk %}">Купить</a>
+                    <a  class="btn btn-primary" href="{% url 'catalog:products_detail' product.pk %}">Подробнее</a>
+                    <a  class="btn btn-primary" href="{% url 'catalog:product_update' product.pk %}">Редактировать</a>
+                    <a  class="btn btn-primary" href="{% url 'catalog:product_delete' product.pk %}">Удалить</a>
                 </div>
             </div>
         </div>
