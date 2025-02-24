@@ -18,3 +18,7 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.email
+
+    @property
+    def is_moderator(self):
+        return self.groups.filter(name='product_moderator').exists()
