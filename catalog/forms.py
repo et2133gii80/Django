@@ -7,6 +7,7 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = "__all__"
+        exclude = ['status', 'owner']
 
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
@@ -53,6 +54,19 @@ class ProductForm(forms.ModelForm):
         if price <= 0:
             raise ValidationError('цена некорректная')
         return price
+
+class ProductModeratorForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['status']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['status'].widget.attrs.update({
+            'class': 'form-check-input',
+            'placeholder': 'Укажите статус товара'
+        })
 
 
 

@@ -30,9 +30,16 @@
                     <ul class="list-unstyled mt-3 mb-4 text-start m-3">
                         <li>- {{product.description |truncatechars:100}}</li>
                     </ul>
+
                     <a  class="btn btn-primary" href="{% url 'catalog:products_detail' product.pk %}">Подробнее</a>
+                    {% if user.is_authenticated %}
+                    {% if product.owner_id == request.user.id or user.is_moderator %}
                     <a  class="btn btn-primary" href="{% url 'catalog:product_update' product.pk %}">Редактировать</a>
+                    {% endif %}
+                    {% if perms.catalog.delete_product%}
                     <a  class="btn btn-primary" href="{% url 'catalog:product_delete' product.pk %}">Удалить</a>
+                    {% endif %}
+                    {% endif %}
                 </div>
             </div>
         </div>

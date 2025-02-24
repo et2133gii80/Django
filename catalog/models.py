@@ -1,5 +1,5 @@
 from django.db import models
-
+from users.models import User
 # Create your models here.
 
 class Category(models.Model):
@@ -23,6 +23,8 @@ class Product(models.Model):
     created_at = models.DateTimeField(verbose_name='дата создания', auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name='дата последнего изменения', auto_now_add=True)
     group = models.ForeignKey(Category, on_delete=models.CASCADE)
+    status = models.BooleanField(default= False)
+    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return f'{self.product_name} {self.description}'
@@ -31,5 +33,8 @@ class Product(models.Model):
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
         ordering = ['product_name']
+        permissions = [
+            ('can_unpublish_product', 'can unpublish product')
+        ]
 
 
