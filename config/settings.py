@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 import os
+from operator import truediv
 
-from django.conf.global_settings import AUTH_USER_MODEL
+from django.conf.global_settings import AUTH_USER_MODEL, CACHES
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -153,3 +154,12 @@ EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'proskmax@yandex.ru'
 EMAIL_HOST_PASSWORD = 'pyiuxrvxnvtadivz'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+CACHE_ENABLED = True
+if CACHE_ENABLED:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+            'LOCATION': 'redis://localhost:6379/1'
+        }
+    }

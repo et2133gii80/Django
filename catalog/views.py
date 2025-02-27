@@ -1,16 +1,13 @@
-from itertools import product
-
 from django.core.exceptions import PermissionDenied
-from mypy.types import names
-
-from catalog.models import Product
+from catalog.models import Product, Category
 from django.views.generic import ListView, DetailView, TemplateView
-from django.shortcuts import render
+
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 from .forms import ProductForm, ProductModeratorForm
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
+from .services import get_product_from_cache, get_products_by_category
 
 
 # Create your views here.
@@ -58,10 +55,16 @@ class ProductListView(ListView):
             return qs.filter(status=True)
         if not self.request.user.groups.filter(name='product_moderator'):
             return qs.filter(status=True)
-        return qs
+        return qs and get_product_from_cache()
 
 class ProductDetailView(DetailView):
     model = Product
 
 class ContactTemplateView(TemplateView):
     template_name = "catalog/contact.html"
+
+class ProductsByCategoryView(ListView):
+    model = Category
+    def get_queryset(self):
+        category_id = self.kwargs.get('pk')
+        return get_products_by_category(category_id=category_id)
